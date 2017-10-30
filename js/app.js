@@ -104,10 +104,10 @@ var map,infowindow;
       var bounds = new google.maps.LatLngBounds();
 
       var defaultIcon = makeMarkerIcon('ff3a58');
-      var highlightedIcon = makeMarkerIcon('9ec3ff');
+      var highlightedIcon = makeMarkerIcon('9e9e9e');
 
       // The following group uses the location array to create an array of markers on initialize.
-      for (var i = 0; i < locations.length; i++) {
+         locations.forEach(function (d,i) {
         // Get the position from the location array.
         var position = locations[i].location;
         var title = locations[i].title;
@@ -136,7 +136,7 @@ var map,infowindow;
         marker.addListener('mouseout', function() {
           this.setIcon(defaultIcon);
         });
-      }
+      })
       // Extend the boundaries of the map for each marker
       map.fitBounds(bounds);
     }
