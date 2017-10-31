@@ -16,10 +16,10 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div>
-          <input data-bind="textInput: userInput"  placeholder="search a place in Dubai" />
+          <input data-bind="textInput: userInput"  placeholder="search for a place in Dubai" />
         </div>
         <ul data-bind="foreach: mySearch">
-          <a href="#" data-bind="text: title"></a>
+          <a href="#" data-bind="text: title, click: openInfo(title)"></a>
         </ul>
       </div>
       <div id="map"></div>
