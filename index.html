@@ -16,11 +16,10 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <div>
-          <input data-bind="textInput: userInput" />
-          <p>copy one of places in the list and paste it in and the search box</p>
+          <input data-bind="textInput: userInput"  placeholder="search a place in Dubai" />
         </div>
         <ul data-bind="foreach: mySearch">
-          <li data-bind="text: title"></li>
+          <a href="#" data-bind="text: title"></a>
         </ul>
       </div>
       <div id="map"></div>

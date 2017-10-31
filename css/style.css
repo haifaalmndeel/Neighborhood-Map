@@ -12,7 +12,7 @@ body {
 }
 
 input {
-   font-size: 12px;
+   font-size: 15px;
 }
 
 h1 {
@@ -69,7 +69,6 @@ p {
 }
 
 .sidenav a {
-   padding: 8px 8px 8px 32px;
    text-decoration: none;
    font-size: 25px;
    color: #e0e0e0;
