@@ -7,7 +7,7 @@ var locations=[
   {title:"Burj khalifa",location:{lat:25.197515,lng:55.274873}},
   {title:"Jumeirah Beach",location:{lat:25.193957,lng:55.231618}},
   {title:"Emirates Mall",location:{lat:25.121237,lng:55.200373}},
-  {title:"atlantis the blam",location:{lat:25.130443,lng:55.11715}},
+  {title:"Atlantis the blam",location:{lat:25.130443,lng:55.11715}},
   {title:"Dubai Zoo",location:{lat:25.222483,lng:55.256453}},
   {title:"Sky dive",location:{lat:25.091427,lng:55.138296}}];
 // Create the  view model for the knockout, search box and markers to make it work.
@@ -40,9 +40,8 @@ myViewModel.mySearch = ko.computed(function () {
       }
     }
     for (i = 0; i < markers.length; i++) {
-      for (j = 0; j < filteredLocations.length; j++
-      ) {
-        if (filteredLocations[j].title == markers[i].getTitle()) {
+      for (j = 0; j < filteredLocations.length; j++) {
+          if ( markers[i].getTitle().indexOf(filteredLocations[j].title) > -1) {
           markers[i].setMap(map);
         } else {
           markers[i].setMap(null);
@@ -95,6 +94,10 @@ function initMap() {
         marker.setAnimation(null);
       } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
+        setTimeout(
+          function(){
+           marker.setAnimation(null)
+         },700)
       }
     }
   });
@@ -110,7 +113,7 @@ function populateInfoWindow(marker) {
   if (infowindow.marker != marker) {
     infowindow.marker = marker;
     // open wikipedia in the infowindow
-    wikiMarker(marker);
+    wikiInfo(marker);
     // Make sure the marker property is cleared if the infowindow is closed.
     infowindow.addListener('closeclick', function () {
         infowindow.setMarker = null;
@@ -119,7 +122,7 @@ function populateInfoWindow(marker) {
 }
 
 //this function for the third-party wikipedia 
-function wikiMarker(marker) {
+function wikiInfo(marker) {
   // the API link
   var wikiURL =
     'https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=' +
@@ -140,8 +143,16 @@ function wikiMarker(marker) {
       // to make sure the wikipedia API will work before you click on it 
       infowindow.setContent('<div>' + marker.title + '</div>' + '<div>' + link + '</div>');
       infowindow.open(map, marker);
+    },
+    error: function(ErrorMessage){
+     alert("Error: wikipedia could not be laoded");
     }
   });
+}
+
+//function for Error Handling for the map .
+function ErrorHandling(){
+  alert("Error: map could not be laoded");
 }
 
 // this function to open the navbar side .

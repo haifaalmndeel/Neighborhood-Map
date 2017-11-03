@@ -4,6 +4,7 @@
 <head>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>nieghborhood map</title>
 </head>
 
 <body>
@@ -19,17 +20,15 @@
           <input data-bind="textInput: userInput"  placeholder="search for a place in Dubai" />
         </div>
         <ul data-bind="foreach: mySearch">
-          <a href="#" data-bind="text: title, click: openInfo(title)"></a>
+          <li data-bind="text: title, click: openInfo(title)"></li>
         </ul>
       </div>
       <div id="map"></div>
     </div>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9AOW0a9vmKjGOvWBi_pSyIKQOSxuK8U&v=3&callback=initMap">
-    </script>
+  </div>
     <script type='text/javascript' src='js/knockout-3.4.2.js'></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script src="js/jQuery.js"></script>
-
+    <script async defer onerror="ErrorHandling()"  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAr9AOW0a9vmKjGOvWBi_pSyIKQOSxuK8U&v=3&callback=initMap"></script>
 </body>
 </html>
