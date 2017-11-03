@@ -96,8 +96,8 @@ function initMap() {
         marker.setAnimation(google.maps.Animation.BOUNCE);
         setTimeout(
           function(){
-           marker.setAnimation(null)
-         },700)
+           marker.setAnimation(null);
+         },700);
       }
     }
   });
