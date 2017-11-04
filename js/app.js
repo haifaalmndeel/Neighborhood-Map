@@ -41,13 +41,14 @@ myViewModel.mySearch = ko.computed(function () {
     }
     for (i = 0; i < markers.length; i++) {
       for (j = 0; j < filteredLocations.length; j++) {
-          if ( markers[i].getTitle().indexOf(filteredLocations[j].title) > -1) {
+        if (filteredLocations[j].title == markers[i].getTitle()) {
           markers[i].setMap(map);
         } else {
           markers[i].setMap(null);
         }
       }
     }
+
     return filteredLocations;
   }
 }, myViewModel);
