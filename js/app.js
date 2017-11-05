@@ -34,6 +34,7 @@ myViewModel.mySearch = ko.computed(function () {
     return this.myLocations();
   } else {
     //push evry marker get in userInput to filteredLocations 
+
     for (i = 0; i < locations.length; i++) {
       if (locations[i].title.toLowerCase().indexOf(userInput) > -1) {
         filteredLocations.push(locations[i]);
@@ -41,7 +42,8 @@ myViewModel.mySearch = ko.computed(function () {
     }
     for (i = 0; i < markers.length; i++) {
       for (j = 0; j < filteredLocations.length; j++) {
-        if (filteredLocations[j].title == markers[i].getTitle()) {
+          if (markers[i].getTitle().indexOf(filteredLocations[j].title) > -1) {
+          console.log(markers[i]);
           markers[i].setMap(map);
         } else {
           markers[i].setMap(null);
