@@ -40,13 +40,13 @@ myViewModel.mySearch = ko.computed(function () {
         filteredLocations.push(locations[i]);
       }
     }
+
     for (i = 0; i < markers.length; i++) {
+        markers[i].setMap(null);
       for (j = 0; j < filteredLocations.length; j++) {
-          if (markers[i].getTitle().indexOf(filteredLocations[j].title) > -1) {
-          console.log(markers[i]);
+          if ( markers[i].getTitle().indexOf(filteredLocations[j].title) > -1) {
           markers[i].setMap(map);
-        } else {
-          markers[i].setMap(null);
+              break;
         }
       }
     }
